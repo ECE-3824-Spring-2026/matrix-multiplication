@@ -33,11 +33,31 @@ Matrix Matrix::operator+( const float& other) const{
     return Matrix(rows,cols,newVals);
 }
 
+Matrix Matrix::operator-( const float& other) const{
+    int nElem = rows*cols;
+    float newVals[nElem];
+    for (int i = 0; i<=nElem ; i++)
+        newVals[i] = vals[i] - other;
+    return Matrix(rows,cols,newVals);
+}
 
+Matrix Matrix::operator*( const float& other) const{
+    int nElem = rows*cols;
+    float newVals[nElem];
+    for (int i = 0; i<=nElem ; i++)
+        newVals[i] = vals[i] * other;
+    return Matrix(rows,cols,newVals);
+}
 
-Matrix Matrix::operator-( const float& other) const{return *this;}
-Matrix Matrix::operator*( const float& other) const{return *this;}
-Matrix Matrix::operator/( const float& other) const{return *this;}
+Matrix Matrix::operator/( const float& other) const{
+    if (other==0)
+        throw domain_error("Divide by zero, matrix ÷ 0");
+    int nElem = rows*cols;
+    float newVals[nElem];
+    for (int i = 0; i<=nElem ; i++)
+        newVals[i] = vals[i] / other;
+    return Matrix(rows,cols,newVals);
+}
 
 Matrix Matrix::operator+( const Matrix& other) const {return *this;}
 Matrix Matrix::operator-( const Matrix& other) const {return *this;}
@@ -46,13 +66,13 @@ Matrix Matrix::operator*( const Matrix& other) const {return *this;}
 Matrix& Matrix::operator=(const Matrix& other) {return *this;}
 
 const float& Matrix::operator()(int r,int c) const{
-    // enables float x = A(1,2) -> data retrieval
+    // enables A(1,2) = 3.14 -> data assignment
     int ind = c + r*cols;
     return vals[ind];
 }
 
 float& Matrix::operator()(int r, int c){
-    // enables A(1,2) = 3.14 -> data assignment
+    // enables float x = A(1,2) -> data retrieval
     int ind = c + r*cols;
     return vals[ind];
 }
