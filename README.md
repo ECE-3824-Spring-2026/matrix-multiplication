@@ -16,7 +16,7 @@ x(0,1,2);
 Create [[1,2,3],[4,5,6]] (2 rows, 3 columns)
 
 ```C++
-float vals[][3] = {{1,2,3},{4,5,6}};
+float *vals = new float[6]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f}; // dynamically sized array
 matrix x(2,3,vals);  // create matrix of dimensions 2x3
 ```
 
@@ -54,13 +54,11 @@ int n_cols = x.get_n_cols();
 // n_cols = 3
 ```
 
-## 
+## Errors
 
-* determinant
-* rank
-* add, subtract, multiply, divide
-* factor(?)
-* what kind of errors get thrown
+* Incompatible inputs including non-square matrix for `determinant` -> `invalid_arguement`
+* Divide by zero -> `domain_error`
+* All other errors -> `logic_error` 
 
 
 ## Matrix Transformations
@@ -68,10 +66,5 @@ int n_cols = x.get_n_cols();
 ### Transposition
 ```C++
 matrix y = x.transpose();
-```
-
-### Inverse
-```C++
-matrix y = x.inverse();
 ```
 
