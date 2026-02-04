@@ -68,3 +68,12 @@ int n_cols = x.get_n_cols();
 matrix y = x.transpose();
 ```
 
+## Expected Folder Structure
+project/
+├── Makefile
+├── matrix.h
+├── src/
+│   └── matrix.cpp      (implementers write this)
+└── testing/
+    └── test_matrix.cpp (testers write this)
+    
