@@ -59,11 +59,29 @@ Matrix Matrix::operator/( const float& other) const{
     return Matrix(rows,cols,newVals);
 }
 
-Matrix Matrix::operator+( const Matrix& other) const {return *this;}
+Matrix Matrix::operator+( const Matrix& other) const {
+    if (this->rows != other.rows || this->cols != other.cols)
+        throw invalid_argument("Can't add: matrix dimensions don't agree");
+    Matrix soln = other;
+    for (int i=0;i<this->rows;i++)
+        for (int j=0;j<this->cols;j++)
+            soln(i,j) += this->operator()(i,j);
+    return soln;
+
+}
+
 Matrix Matrix::operator-( const Matrix& other) const {return *this;}
 Matrix Matrix::operator*( const Matrix& other) const {return *this;}
 
-Matrix& Matrix::operator=(const Matrix& other) {return *this;}
+Matrix& Matrix::operator=(const Matrix& other) {
+    int r = other.rows;
+    int c = other.cols;
+    int nElem = r*c;
+    float vals[nElem];
+    for (int i=0;i<nElem;i++)
+        this->vals[i] = other.vals[i];
+    return *this;
+}
 
 const float& Matrix::operator()(int r,int c) const{
     // enables A(1,2) = 3.14 -> data assignment

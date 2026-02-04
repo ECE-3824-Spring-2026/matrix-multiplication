@@ -43,5 +43,20 @@ int main(){
     }
 
     cout << endl;
+    cout << "Add matrix A and B, same dims" << endl;
+    C = A + B;
+    C.display();
+
+    cout << endl;
+    cout << "Add matrix A and E, different dims" << endl;
+    try{
+        float w[] = {-1,-2};
+        Matrix E(1,2,w);
+        C = A + E;
+        C.display();
+    }
+    catch(invalid_argument& e){
+        cout << "Error: " << e.what() << endl; 
+    }
 
 }
