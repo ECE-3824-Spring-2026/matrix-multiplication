@@ -1,5 +1,11 @@
+#include<vector>
+using namespace std;
+
 class Matrix{
     private:
+    int rows;
+    int cols;
+    vector<float> vals;
 
     public:
 
