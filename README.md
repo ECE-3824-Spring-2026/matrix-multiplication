@@ -69,6 +69,7 @@ matrix y = x.transpose();
 ```
 
 ## Expected Folder Structure
+```
 project/
 ├── Makefile
 ├── matrix.h
@@ -76,4 +77,4 @@ project/
 │   └── matrix.cpp      (implementers write this)
 └── testing/
     └── test_matrix.cpp (testers write this)
-    
+```
