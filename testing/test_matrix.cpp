@@ -59,4 +59,10 @@ int main(){
         cout << "Error: " << e.what() << endl; 
     }
 
+    cout << endl;
+    cout << "determinant of matrix A" << endl;
+    A.display();
+    cout << "det(A) = " << A.determinant();
+    cout << endl;
+
 }
