@@ -1,2 +1,2 @@
-// File: ~/matrix-multiplication/testing/constructor_testing.cpp
+// File: ~/matrix-multiplication/testing/test_destructor.cpp
 // Shahzad Khan
