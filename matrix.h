@@ -7,8 +7,8 @@ class Matrix{
     Matrix& operator=(const Matrix&);       // copy assignment A = B
     ~Matrix();                              // destructor
 
-    const float& operator()(int,int) const; // enables float x = A(1,2) -> data retrieval
-    float& operator()(int i, int j);        // enables A(1,2) = 3.14 -> data assignment
+    const float& operator()(int,int) const; // enables A(1,2) = 3.14 -> data assignment 
+    float& operator()(int i, int j);        // enables float x = A(1,2) -> data retrieval
 
     int get_n_rows() const;                 // return number of rows
     int get_n_cols() const;                 // return number of columns
