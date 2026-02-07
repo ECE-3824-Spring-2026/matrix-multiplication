@@ -1,5 +1,9 @@
 class Matrix{
     private:
+    
+        int rows;
+        int cols;
+        float* data;
 
     public:
 

@@ -1,30 +1,50 @@
-matrix matrix::operator+(float k) const {
-    matrix result(rows, cols);
+#include "../matrix.h"
+
+
+Matrix Matrix::operator+(const float& k) const {
+    float* vals = new float[rows * cols];
+
     for (int i = 0; i < rows * cols; i++)
-        result.data[i] = data[i] + k;
+        vals[i] = data[i] + k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
     return result;
 }
 
-matrix matrix::operator-(float k) const {
-    matrix result(rows, cols);
+Matrix Matrix::operator-(const float& k) const {
+    float* vals = new float[rows * cols];
+
     for (int i = 0; i < rows * cols; i++)
-        result.data[i] = data[i] - k;
+        vals[i] = data[i] - k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
     return result;
 }
 
-matrix matrix::operator*(float k) const {
-    matrix result(rows, cols);
+Matrix Matrix::operator*(const float& k) const {
+    float* vals = new float[rows * cols];
+
     for (int i = 0; i < rows * cols; i++)
-        result.data[i] = data[i] * k;
+        vals[i] = data[i] * k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
     return result;
 }
 
-matrix matrix::operator/(float k) const {
-    if (k == 0.0f)
-        throw std::domain_error("Divide by zero");
+Matrix Matrix::operator/(const float& k) const {
+    if (k == 0.0f) {
+        return *this;
+    }
 
-    matrix result(rows, cols);
+    float* vals = new float[rows * cols];
+
     for (int i = 0; i < rows * cols; i++)
-        result.data[i] = data[i] / k;
+        vals[i] = data[i] / k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
     return result;
 }
