@@ -2,8 +2,13 @@
 #include "../matrix.h"
 
 Matrix get_submatrix(const Matrix &m , int skip);
+Matrix zeros(int r, int j);
 
 Matrix::Matrix(int r, int c, const float *v){
+    if (r < 1)
+        throw invalid_argument("constructor - rows must be >= 1");
+    if (c < 1)
+        throw invalid_argument("constructor - cols must be >= 1");
     rows = r;
     cols = c;
     vals.assign(v,v+r*c);
@@ -11,8 +16,13 @@ Matrix::Matrix(int r, int c, const float *v){
 
 Matrix::~Matrix(){}
 
-int Matrix::get_n_rows() const {return rows;}
-int Matrix::get_n_cols() const {return cols;}
+int Matrix::get_n_rows() const {
+    return rows;
+}
+
+int Matrix::get_n_cols() const {
+    return cols;
+}
 
 float Matrix::determinant() const {
     if ( rows != cols )
@@ -21,8 +31,10 @@ float Matrix::determinant() const {
         return vals[0];
     float det = 0;
     float sign = 1;
+    float v;
     for (int i = 0; i<rows ; i++){
-        det += sign * get_submatrix(*this,i).determinant();
+        v = this->operator()(0,i);
+        det += sign * v * get_submatrix(*this,i).determinant();
         sign *= -1;
     } 
     return det;
@@ -34,7 +46,7 @@ void Matrix::display()const {
     int ind = 0;
     for (int i = 0 ; i < rows ; i++){
         for (int j = 0 ; j < cols ; j++){
-            printf("%0.2f\t",vals[ind++]);
+            printf("%5.2f\t",vals[ind++]);
         }
         printf("\n");
     }    
@@ -82,11 +94,31 @@ Matrix Matrix::operator+( const Matrix& other) const {
         for (int j=0;j<this->cols;j++)
             soln(i,j) += this->operator()(i,j);
     return soln;
-
 }
 
-Matrix Matrix::operator-( const Matrix& other) const {return *this;}
-Matrix Matrix::operator*( const Matrix& other) const {return *this;}
+Matrix Matrix::operator-( const Matrix& other) const {
+    if (this->rows != other.rows || this->cols != other.cols)
+        throw invalid_argument("Can't add: matrix dimensions don't agree");
+    Matrix soln = other;
+    for (int i=0;i<this->rows;i++)
+        for (int j=0;j<this->cols;j++)
+            soln(i,j) = this->operator()(i,j) - soln(i,j);
+    return soln;
+}
+
+Matrix Matrix::operator*( const Matrix& other) const {
+    if (this->cols != other.rows)
+        throw invalid_argument("Matrix multiplication: inner dimensions don't match");
+    Matrix result = zeros(this->rows , other.cols);
+    for (int i = 0 ; i<this->rows ; i++){
+        for (int j = 0 ; j<other.cols; j++){
+            for (int k = 0 ; k<this->cols; k++){
+                result(i,j) += this->operator()(i,k) * other(k,j);
+            }
+        }
+    }
+    return result;
+}
 
 Matrix& Matrix::operator=(const Matrix& other) {
     int r = other.rows;
@@ -123,4 +155,10 @@ Matrix get_submatrix(const Matrix &m , int skip){
 
     float* vals = newValsVec.data();    
     return Matrix(newRows,newCols,vals);
+}
+
+Matrix zeros(int r, int c){
+    vector<float> vals(r*c , 0.0f);
+    Matrix m(r,c,vals.data());
+    return m;
 }

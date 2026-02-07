@@ -62,7 +62,19 @@ int main(){
     cout << endl;
     cout << "determinant of matrix A" << endl;
     A.display();
-    cout << "det(A) = " << A.determinant();
+    cout << "det(A) = " << A.determinant() << endl;;
+
     cout << endl;
+    cout << "determinant of matrix D" << endl;
+    float z[] = {5,-7,2,2,0,3,0,-4,-5,-8,0,3,0,5,0,-6};
+    Matrix D(4,4,z);
+    D.display();
+    cout << "det(D) = " << D.determinant() << endl;
+
+    cout << endl;
+    cout << "A*B = " << endl;
+    Matrix E = A*B;
+    E.display();
+    cout << endl;    
 
 }
