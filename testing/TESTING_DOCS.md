@@ -61,7 +61,7 @@ TEST_CASE("another addition test"){
 }
 ```
 
-See [test_constructor](test_constructor.cpp) for an example.
+See [test_constructor.cpp](https://github.com/ECE-3824-Spring-2026/matrix-multiplication/blob/testing-constructor/testing/test_constructor.cpp) for an example.
 
 ### Adding a test file
 * clone the testing branch
