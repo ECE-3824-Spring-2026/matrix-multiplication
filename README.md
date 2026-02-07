@@ -18,6 +18,12 @@ Create [[1,2,3],[4,5,6]] (2 rows, 3 columns)
 ```C++
 float *vals = new float[6]{1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f}; // dynamically sized array
 matrix x(2,3,vals);  // create matrix of dimensions 2x3
+
+OR
+
+float v[] = {1,2,3,4};
+Matrix A(2,2,v);
+
 ```
 
 ## Matrix Access
