@@ -1,7 +1,47 @@
 #include<iostream>
 #include"../matrix.h"
+#include <catch2/catch_test_macros.hpp>
 
-int main(){
+TEST_CASE("Constructor"){
+    float a[] = {1,2,3,4};
+    REQUIRE_THROWS(Matrix(0,0,a));
+    REQUIRE_THROWS(Matrix(2,0,a));
+    REQUIRE_THROWS(Matrix(0,2,a));   
+}
+
+TEST_CASE("Addition Test"){
+    float a[] = {1  ,2  ,3  ,4};
+    float b[] = {1.5,2.5,3.5,4.5};
+    float c[] = {2.5,4.5,6.5,8.5};
+    float d[] = {1,2,3};
+    float e[] = {3,4,5,6};
+    Matrix A (2,2,a);
+    Matrix B (2,2,b);
+    Matrix C (2,2,c);
+    Matrix D (1,3,d);
+    Matrix E (2,2,e);
+    REQUIRE(A+B == C);
+    REQUIRE(B + 1.5 == E);
+    REQUIRE_THROWS(A+D);   
+}
+
+TEST_CASE("Subtraction Test"){
+    float a[] = {1  ,2  ,3  ,4};
+    float b[] = {1.5,2.5,3.5,4.5};
+    float c[] = {0.5,0.5,0.5,0.5};
+    float d[] = {1,2,3};
+    float e[] = {1.25,2.25,3.25,4.25};
+    Matrix A (2,2,a);
+    Matrix B (2,2,b);
+    Matrix C (2,2,c);
+    Matrix D (1,3,d);
+    Matrix E (2,2,e);
+    REQUIRE(B-A == C);
+    REQUIRE(B-0.25 == E);
+    REQUIRE_THROWS(A+D);   
+}
+
+int alternate_main(){
     float v[] = {1,2,3,4};
     Matrix A(2,2,v);
     Matrix B = A + 4;
@@ -77,4 +117,15 @@ int main(){
     E.display();
     cout << endl;    
 
+    cout << endl;
+    cout << "Testing if A==A" << endl;
+    cout << "It is " << (A==A ? "true" : "false") << " that A==A" << endl;
+    cout << endl;
+
+    cout << endl;
+    cout << "Testing if A==B" << endl;
+    cout << "It is " << (A==B ? "true" : "false") << " that A==B" << endl;
+    cout << endl;
+
+    return 0;
 }

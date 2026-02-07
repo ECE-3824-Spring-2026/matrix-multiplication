@@ -141,6 +141,18 @@ float& Matrix::operator()(int r, int c){
     return vals[ind];
 }
 
+bool Matrix::operator==(const Matrix& other) const{
+    if (this->rows != other.rows)
+        return false;
+    if (this->cols != other.cols)
+        return false;
+    int nElems = rows*cols;
+    for (int i = 0; i< nElems; i++)
+        if (this->vals[i] != other.vals[i])
+            return false;
+    return true;
+}
+
 Matrix get_submatrix(const Matrix &m , int skip){
     vector<float> newValsVec;
     int newRows = m.get_n_rows() - 1;
