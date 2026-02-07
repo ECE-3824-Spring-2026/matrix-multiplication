@@ -1,21 +1,22 @@
 # Testing Documentation
 
-##### We should have two people testing the constructor, destructor, and non-input functions
-* input matrices of non square sizes
-* possibly test memory allocation issues with input pointer
+### We should have two people testing the constructor, destructor, and non-input functions
 
-They should test the functions that aren't easy to break (no inputs):
+They should test the functions that aren't easy to break
 ```cpp
+Matrix(int,int,const float*);           // constructor
+Matrix& operator=(const Matrix&);       // copy assignment A = B
 int get_n_rows() const;                 // return number of rows
 int get_n_cols() const;                 // return number of columns
 void display() const;                   // display formatted matrix
-Matrix(int,int,const float*);           // constructor
-Matrix& operator=(const Matrix&);       // copy assignment A = B
+float& operator()(int i, int j);        // enables float x = A(1,2) -> data retrieval
 ~Matrix();                              // destructor
 ```
 
-##### The remaining 5 people should test two items each:
+### The remaining 6 people should test two items each:
+Ensure that there isn't an existing file testing that operation before choosing one to write.
 ```cpp
+const float& operator()(int,int) const; // enables A(1,2) = 3.14 -> data assignment 
 float determinant() const;              // return matrix determinant
 int rank() const;                       // return matrix rank
 Matrix transpose() const;                   // B = A.transpose
@@ -26,6 +27,7 @@ Matrix operator+( const float& )  const;    // add constant to Matrix
 Matrix operator-( const float& )  const;
 Matrix operator*( const float& )  const;
 Matrix operator/( const float& )  const;
+bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 ```
 
 ### using catch2 (from Readings)
@@ -58,3 +60,16 @@ TEST_CASE("another addition test"){
     REQUIRE(f1(5,-4)==1);
 }
 ```
+
+See [test_constructor](test_constructor.cpp) for an example.
+
+### Adding a test file
+* clone the testing branch
+* create a file called test_[name of test].cpp, ex. test_constructor.cpp
+* add a comment with your name at the top
+* push the new file directly to the testing branch (so others can see which operations are being developed already)
+
+### Writing your tests
+* create a branch from the testing branch
+* make your changes then push to your branch
+* when you are done writing tests, merge your branch into the testing branch
