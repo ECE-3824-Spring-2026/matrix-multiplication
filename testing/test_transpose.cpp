@@ -15,3 +15,27 @@ TEST_CASE("0 based index, and matches doc format"){
     REQUIRE(x(1,0) == 4.0f);
 }
 
+TEST_CASE("ensure transpose dimensions change accordingly") {
+    float vals[] = {1,2,3,4,5,6};
+    Matrix x(2, 3, vals);
+    Matrix y = x.transpose();
+
+    REQUIRE(y.rows() == 3);
+    REQUIRE(y.cols() == 2);
+}
+
+TEST_CASE("ensure elements mapped correctly") {
+    float vals[] = {1,2,3,4,5,6};
+    Matrix x(2, 3, vals);
+    Matrix y = x.transpose();
+
+    REQUIRE(y(0,0) == 1.0f);
+    REQUIRE(y(1,0) == 2.0f);
+    REQUIRE(y(2,0) == 3.0f);
+    REQUIRE(y(0,1) == 4.0f);
+    REQUIRE(y(1,1) == 5.0f);
+    REQUIRE(y(2,1) == 6.0f);
+
+}
+
+
