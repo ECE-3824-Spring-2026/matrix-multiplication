@@ -15,6 +15,7 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++17 -I.
 LDFLAGS = -lCatch2Main -lCatch2
+DEBUG_FLAGS = -g
 
 # Source files
 IMPL_SRC = $(wildcard src/*.cpp)
@@ -54,4 +55,9 @@ run: $(TARGET)
 clean:
 	rm -f $(IMPL_OBJ) $(TEST_OBJ) $(TARGET)
 
+# Debug build
+debug: CXXFLAGS += $(DEBUG_FLAGS)
+debug: clean $(TARGET)
+	@echo "Built with debug symbols"
+	
 .PHONY: all impl tests run clean

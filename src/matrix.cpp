@@ -1,4 +1,5 @@
-#include "matrix.h"
+#include "../matrix.h"
+
 
 Matrix Matrix::transpose() const {
     // Create array for transposed data (swapped dimensions)
@@ -15,5 +16,51 @@ Matrix Matrix::transpose() const {
     Matrix result(cols, rows, transposed_data);
     delete[] transposed_data;
     
+
+Matrix Matrix::operator+(const float& k) const {
+    float* vals = new float[rows * cols];
+
+    for (int i = 0; i < rows * cols; i++)
+        vals[i] = data[i] + k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
+    return result;
+}
+
+Matrix Matrix::operator-(const float& k) const {
+    float* vals = new float[rows * cols];
+
+    for (int i = 0; i < rows * cols; i++)
+        vals[i] = data[i] - k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
+    return result;
+}
+
+Matrix Matrix::operator*(const float& k) const {
+    float* vals = new float[rows * cols];
+
+    for (int i = 0; i < rows * cols; i++)
+        vals[i] = data[i] * k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
+    return result;
+}
+
+Matrix Matrix::operator/(const float& k) const {
+    if (k == 0.0f) {
+        return *this;
+    }
+
+    float* vals = new float[rows * cols];
+
+    for (int i = 0; i < rows * cols; i++)
+        vals[i] = data[i] / k;
+
+    Matrix result(rows, cols, vals);
+    delete[] vals;
     return result;
 }
