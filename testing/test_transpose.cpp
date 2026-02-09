@@ -38,4 +38,21 @@ TEST_CASE("ensure elements mapped correctly") {
 
 }
 
+TEST_CASE("transpose twice returns orginal"){
+    float v[] = { -1.5f, 0.0f,  7.25f,
+                   3.0f, 9.0f, -4.0f };
+    Matrix x(2, 3, v);
+
+    Matrix xt = x.transpose();
+    Matrix x2 = xt.transpose();
+
+    REQUIRE(x2.get_n_rows() == x.get_n_rows());
+    REQUIRE(x2.get_n_cols() == x.get_n_cols());
+
+    for(int i = 0; i < x.get_n_rows(); i++){
+        for(int j = 0; j < x.get_n_cols(); j++){
+            REQUIRE(feq(x2(i,j), x(i,j)));
+        }
+    }
+}
 
