@@ -1,5 +1,9 @@
 class Matrix{
     private:
+    
+        int rows;
+        int cols;
+        float* data;
 
     public:
 
@@ -25,5 +29,6 @@ class Matrix{
     Matrix operator-( const float& )  const;
     Matrix operator*( const float& )  const;
     Matrix operator/( const float& )  const;
+    bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 
 };
