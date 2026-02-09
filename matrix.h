@@ -1,6 +1,9 @@
 class Matrix{
     private:
-
+    int n_rows;                             // number of rows
+    int n_cols;                             // number of columns
+    float** data;                           // 2D pointer to matrix data (enables data[i][j] access)
+    
     public:
 
     Matrix(int,int,const float*);           // constructor
