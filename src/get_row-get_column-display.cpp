@@ -33,7 +33,7 @@ using namespace std;
         for (int i = 0; i < n_rows ; i++){
             for (int j = 0; j < n_cols  ; j++){
                 // assign the value from input_data into data
-                // [i * n_cols + j] convert 2D input array into 3D matrix access pattern for data[i][j]
+                // [i * n_cols + j] convert input array into 2D matrix access pattern for data[i][j]
                 //
                 data [i][j] = input_data[ i* n_cols + j];
             }
