@@ -17,8 +17,8 @@ float& operator()(int i, int j);        // enables float x = A(1,2) -> data retr
 Ensure that there isn't an existing file testing that operation before choosing one to write.
 ```cpp
 const float& operator()(int,int) const; // enables A(1,2) = 3.14 -> data assignment 
-float determinant() const;              // return matrix determinant
-int rank() const;                       // return matrix rank
+float determinant() const;              // return matrix determinant                    (jass gatewood)
+int rank() const;                       // return matrix rank                           (Jass Gatewood)
 Matrix transpose() const;                   // B = A.transpose
 Matrix operator+( const Matrix& ) const;    // add Matrix plus Matrix
 Matrix operator-( const Matrix& ) const;
