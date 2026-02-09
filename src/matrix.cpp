@@ -15,6 +15,9 @@ Matrix Matrix::transpose() const {
     // Create and return new matrix with swapped dimensions
     Matrix result(cols, rows, transposed_data);
     delete[] transposed_data;
+
+    return result;
+}
     
 
 Matrix Matrix::operator+(const float& k) const {
