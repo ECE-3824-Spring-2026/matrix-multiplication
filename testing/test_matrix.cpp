@@ -7,6 +7,12 @@ TEST_CASE("Constructor"){
     REQUIRE_THROWS(Matrix(0,0,a));
     REQUIRE_THROWS(Matrix(2,0,a));
     REQUIRE_THROWS(Matrix(0,2,a));   
+    REQUIRE_THROWS(Matrix(-1,2,a));   
+
+    // REQUIRE_THROWS(Matrix(2,2.5,a));   
+    // This should be an error but C++ compiler allows 
+    // it unless -Wconversion flag is added to compiler.
+    // That will give a warning not a runtime exception.
 }
 
 TEST_CASE("Addition Test"){
@@ -41,6 +47,14 @@ TEST_CASE("Subtraction Test"){
     REQUIRE_THROWS(A+D);   
 }
 
+TEST_CASE("Transpose"){
+    float v[] = {1,2,3};
+    Matrix A (1,3,v);
+    Matrix B (3,1,v);
+    REQUIRE(A == B.transpose());    
+    REQUIRE(B == A.transpose());    
+}
+
 int alternate_main(){
     float v[] = {1,2,3,4};
     Matrix A(2,2,v);
@@ -63,13 +77,13 @@ int alternate_main(){
 
     cout << endl;
 
-    A(1,0) = 1.1;
+    A(1,0) = 1.1f;
     cout << "Matrix A" << endl;
     A.display();
 
     cout << endl;
     cout << "Matrix C = A / 4.2" << endl;
-    Matrix C = A / 4.2;
+    Matrix C = A / 4.2f;
     C.display();
 
     cout << endl;

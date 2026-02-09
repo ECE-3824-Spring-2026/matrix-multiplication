@@ -13,7 +13,7 @@
 #   make clean      - remove all build files
 
 CXX = g++
-CXXFLAGS = -Wall -std=c++17 -I.
+CXXFLAGS = -Wconversion -Wall -std=c++17 -I.
 LDFLAGS = -lCatch2Main -lCatch2
 DEBUG_FLAGS = -g
 

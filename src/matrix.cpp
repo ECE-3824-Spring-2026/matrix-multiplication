@@ -24,6 +24,14 @@ int Matrix::get_n_cols() const {
     return cols;
 }
 
+Matrix Matrix::transpose() const{
+    Matrix result = zeros(this->cols,this->rows);
+    for (int i = 0 ; i < this->rows; i++)
+        for (int j=0 ; j < this->cols ; j++)
+            result(j,i) = this->operator()(i,j);
+    return result;
+}
+
 float Matrix::determinant() const {
     if ( rows != cols )
         throw invalid_argument("determinant: matrix must be square");
