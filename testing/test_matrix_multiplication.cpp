@@ -47,7 +47,7 @@ TEST_CASE("Matrix multiplication - incompatible dimensions") {
     float v2[] = {1, 2, 3, 4, 5, 6};
     
     Matrix A(2, 2, v1);
-    Matrix B(2, 3, v2);
+    Matrix B(3, 2, v2);
     
     REQUIRE_THROWS_AS(A * B, std::invalid_argument);
 }
