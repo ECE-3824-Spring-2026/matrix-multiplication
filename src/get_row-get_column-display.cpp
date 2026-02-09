@@ -10,45 +10,25 @@
 #include <iostream>
 using namespace std;
 
-    Matrix::Matrix(int rows, int cols, const float* input_data) {
+    Matrix::Matrix(int r, int c, const float* input_data) {
         // Constructor to initialize the matrix with given dimensions and data
-        // row and column
         //
-        n_rows = rows;
-        n_cols = cols;
+        rows = r;
+        cols = c;
 
-        // Allocate memory for pointer to rows
+        // Allocate memory for 1D array (row-major order)
         //
-        data = new float*[n_rows];
+        data = new float[rows * cols];
 
-        // Allocate memory for data in each row
+        // Copy the input data into the matrix
         //
-        for (int i =0; i < n_rows; i++){
-            data[i] = new float[n_cols];
+        for (int i = 0; i < rows * cols; i++) {
+            data[i] = input_data[i];
         }
-
-        // copy the input data into the matrix
-        // go through each row and column and assign the value from input_data into data
-        //
-        for (int i = 0; i < n_rows ; i++){
-            for (int j = 0; j < n_cols  ; j++){
-                // assign the value from input_data into data
-                // [i * n_cols + j] convert input array into 2D matrix access pattern for data[i][j]
-                //
-                data [i][j] = input_data[ i* n_cols + j];
-            }
-        }
-        
     }
     
     Matrix::~Matrix() {
-        // destructor to free allocated memory for the matrix
-        // free memory for data in each row
-        //
-        for (int i = 0; i < n_rows; i++){
-            delete[] data[i];
-        }
-        // free memory for pointer to rows
+        // Destructor to free allocated memory for the matrix
         //
         delete[] data;
     }
@@ -56,32 +36,41 @@ using namespace std;
     int Matrix::get_n_rows() const{
         // Return the number of rows in the matrix
         //
-        return n_rows;
+        return rows;
     }
  
-    int Matrix::get_n_cols() const{
+    int Matrix::get_n_cols() const {
         // Return the number of columns in the matrix
-        //
-        return n_cols;
+        return cols;
+    }
+ 
+    void Matrix::display() const {
+        // Display the formatted matrix
+        for (int i = 0; i < rows; i++) {
+            fprintf(stdout, "[ ");
+            for (int j = 0; j < cols; j++) {
+                // Access element using row-major formula: i * cols + j
+                fprintf(stdout, "%6.2f", data[i * cols + j]);
+            }
+            fprintf(stdout, " ]\n");
+        }
     }
 
-    void Matrix::display() const{
-        // Display the formatted matrix
-        // traverse through each row
-        //
-        for (int i = 0; i < n_rows; i++){
-            // print the opening bracket for each row
-            // 
-            fprintf(stdout, "[");
-            // traverse through each column
-            //
-            for (int j = 0; j < n_cols; j++){
-                // print the data
-                //
-                fprintf(stdout, "%6.2f", data[i][j]);
-            }
-            // print the closing bracket for each row and move to the next line
-            //
-            fprintf(stdout, "]\n");
-        }
+    void test() {
+        // Test function to demonstrate the usage of Matrix class
+        float input_data[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
+        Matrix A(3, 3, input_data);
+        
+        // Display the matrix
+        A.display();
+        
+        // Test getter functions
+        printf("\nRows: %d, Columns: %d\n", A.get_n_rows(), A.get_n_cols());
+    }
+    
+    int main() {
+        printf("*** Matrix Test ***\n");
+        test();
+        printf("\n*** Complete ***\n");
+        return 0;
     }

@@ -1,9 +1,10 @@
 class Matrix{
     private:
-    int n_rows;                             // number of rows
-    int n_cols;                             // number of columns
-    float** data;                           // 2D pointer to matrix data (enables data[i][j] access)
-    
+        int rows;
+        int cols;
+        float* data;
+
+
     public:
 
     Matrix(int,int,const float*);           // constructor
@@ -28,5 +29,6 @@ class Matrix{
     Matrix operator-( const float& )  const;
     Matrix operator*( const float& )  const;
     Matrix operator/( const float& )  const;
+    bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 
 };
