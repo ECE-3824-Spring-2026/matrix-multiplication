@@ -1,0 +1,21 @@
+#include "catch.hpp"
+#include "../matrix.h"
+
+TEST_CASE("Matrix equality operator", "[operator==]") {
+
+    float v1[] = {1, 2, 3, 4};
+    float v2[] = {1, 2, 3, 4};
+    float v3[] = {1, 2, 3, 5};
+
+    Matrix A(2,2,v1);
+    Matrix B(2,2,v2);
+    Matrix C(2,2,v3);
+
+    SECTION("Equal matrices should return true") {
+        REQUIRE(A == B);
+    }
+
+    SECTION("Different matrices should return false") {
+        REQUIRE_FALSE(A == C);
+    }
+}
