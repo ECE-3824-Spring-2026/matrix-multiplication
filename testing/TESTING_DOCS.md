@@ -25,8 +25,8 @@ Matrix operator-( const Matrix& ) const;
 Matrix operator*( const Matrix& ) const;
 Matrix operator+( const float& )  const;    // add constant to Matrix
 Matrix operator-( const float& )  const;
-Matrix operator*( const float& )  const;
-Matrix operator/( const float& )  const;
+Matrix operator*( const float& )  const;  //                                              (Mariya Denny)
+Matrix operator/( const float& )  const;  //                                              (Mariya Denny)
 bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 ```
 
