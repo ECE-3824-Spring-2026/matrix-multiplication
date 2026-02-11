@@ -20,7 +20,7 @@ Matrix Matrix::operator+(const Matrix& other) const{
     else{
         std :: cout << "Error";
         throw std::runtime_error("");
-    }
+    } 
 }
 
 
