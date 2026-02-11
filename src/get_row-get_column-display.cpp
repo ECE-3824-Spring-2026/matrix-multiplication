@@ -9,9 +9,10 @@
 #include "../matrix.h"
 #include <iostream>
 using namespace std;
+
     // error handler function
     static void error_handler(const char* msg) {
-        std::fprintf(stdout, "ERROR: %s\n", msg);
+        fprintf(stdout, "ERROR: %s\n", msg);
     }
 
     Matrix::Matrix(int r, int c, const float* input_data) {
