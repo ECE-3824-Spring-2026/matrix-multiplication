@@ -89,3 +89,63 @@ TEST_CASE("Value Retrieval Bounds"){
 
 }
 
+TEST_CASE("Value Assignment"){
+    float vals[] = {1.0f, 2.0f, 3.0f, 4.0f};
+    Matrix m(2, 2, vals);
+
+    // reassign matrix values
+    m(0,0) = 5.0f;
+    m(0,1) = 6.0f;
+    m(1,0) = 7.0f;
+    m(1,1) = 8.0f;
+
+    // test regular usage
+    REQUIRE(m(0, 0) == 5.0f);
+    REQUIRE(m(0, 1) == 6.0f);
+    REQUIRE(m(1, 0) == 7.0f);
+    REQUIRE(m(1, 1) == 8.0f);
+}
+
+TEST_CASE("Value Assignment Bounds") {
+
+    float vals[] = {1.0f, 2.0f, 3.0f, 4.0f};
+    Matrix m(2, 2, vals);
+
+    // Accessing out of bounds is an invalid argument
+    REQUIRE_THROWS_AS(m(0,2)=1.0f, std::invalid_argument);
+    REQUIRE_THROWS_AS(m(2,0)=1.0f, std::invalid_argument);
+    REQUIRE_THROWS_AS(m(2,2)=1.0f, std::invalid_argument);
+
+    // negative indices are invalid arguments
+    REQUIRE_THROWS_AS(m(-1, 0)=1.0f, std::invalid_argument);
+    REQUIRE_THROWS_AS(m(0, -1)=1.0f, std::invalid_argument);
+    REQUIRE_THROWS_AS(m(-1, -1)=1.0f, std::invalid_argument);
+}
+
+TEST_CASE("Copy Assignment Operator") {
+    float vals1[] = {1.0f, 2.0f, 3.0f, 4.0f};
+    Matrix m1(2, 2, vals1);
+
+    float vals2[] = {5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f};
+    Matrix m2(2, 3, vals2);
+
+    m2 = m1; // Use copy assignment
+
+    // Check dimensions
+    REQUIRE(m2.get_n_rows() == 2);
+    REQUIRE(m2.get_n_cols() == 2);
+
+    // Check values
+    REQUIRE(m2(0, 0) == 1.0f);
+    REQUIRE(m2(1, 1) == 4.0f);
+
+    // Changing m1 should not affect m2
+    m1(0, 0) = 99.0f;
+    REQUIRE(m2(0, 0) == 1.0f); // m2 should not be affected
+
+    // Test self-assignment
+    m1 = m1;
+    REQUIRE(m1.get_n_rows() == 2);
+    REQUIRE(m1.get_n_cols() == 2);
+    REQUIRE(m1(0, 0) == 99.0f);
+}
