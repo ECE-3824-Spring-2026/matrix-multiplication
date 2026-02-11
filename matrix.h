@@ -1,3 +1,6 @@
+#ifndef MATRIX_H
+#define MATRIX_H
+
 class Matrix{
     private:
         int rows;
@@ -7,6 +10,7 @@ class Matrix{
 
     public:
 
+    static const int MAX = 100; // maximum size of the matrix
     Matrix(int,int,const float*);           // constructor
     Matrix& operator=(const Matrix&);       // copy assignment A = B
     ~Matrix();                              // destructor
@@ -32,3 +36,5 @@ class Matrix{
     bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 
 };
+
+#endif
