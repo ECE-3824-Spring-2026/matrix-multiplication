@@ -91,18 +91,3 @@ using namespace std;
             fprintf(stdout, " ]\n");
         }
     }
-
-    void test() {
-        // Test function to demonstrate the usage of Matrix class
-        //
-        float input_data[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
-        Matrix A(3, 3, input_data);
-        
-        // Display the matrix
-        //
-        A.display();
-        
-        // Test getter functions
-        //
-        printf("\nRows: %d, Columns: %d\n", A.get_n_rows(), A.get_n_cols());
-    }
