@@ -22,8 +22,8 @@ int rank() const;                       // return matrix rank           (Jass Ga
 Matrix transpose() const;                   // B = A.transpose          (adil chariwala)
 Matrix operator+( const Matrix& ) const;    // add Matrix plus Matrix
 Matrix operator-( const Matrix& ) const;
-Matrix operator*( const Matrix& ) const;                              // (Shazad)
-Matrix operator+( const float& )  const;    // add constant to Matrix (Mohamad Charabi)
+Matrix operator*( const Matrix& ) const;                              //    (Shahzad)
+Matrix operator+( const float& )  const;    // add constant to Matrix    (Mohamad Charabi)
 Matrix operator-( const float& )  const;
 Matrix operator*( const float& )  const;  //                                              (Mariya Denny)
 Matrix operator/( const float& )  const;  //                                              (Mariya Denny)
