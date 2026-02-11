@@ -9,6 +9,7 @@ Matrix& operator=(const Matrix&);       // copy assignment A = B
 int get_n_rows() const;                 // return number of rows
 int get_n_cols() const;                 // return number of columns
 void display() const;                   // display formatted matrix
+const float& operator()(int,int) const; // enables A(1,2) = 3.14 -> data assignment 
 float& operator()(int i, int j);        // enables float x = A(1,2) -> data retrieval
 ~Matrix();                              // destructor
 ```
@@ -16,17 +17,16 @@ float& operator()(int i, int j);        // enables float x = A(1,2) -> data retr
 ### The remaining 6 people should test two items each:
 Ensure that there isn't an existing file testing that operation before choosing one to write.
 ```cpp
-const float& operator()(int,int) const; // enables A(1,2) = 3.14 -> data assignment 
-float determinant() const;              // return matrix determinant                    (Jass gatewood)
-int rank() const;                       // return matrix rank                           (Jass Gatewood)
-Matrix transpose() const;                   // B = A.transpose
+float determinant() const;              // return matrix determinant.  (Jass Gatewood)
+int rank() const;                       // return matrix rank           (Jass Gatewood)
+Matrix transpose() const;                   // B = A.transpose  adil chariwala
 Matrix operator+( const Matrix& ) const;    // add Matrix plus Matrix
 Matrix operator-( const Matrix& ) const;
 Matrix operator*( const Matrix& ) const;
 Matrix operator+( const float& )  const;    // add constant to Matrix
 Matrix operator-( const float& )  const;
-Matrix operator*( const float& )  const;
-Matrix operator/( const float& )  const;
+Matrix operator*( const float& )  const;  //                                              (Mariya Denny)
+Matrix operator/( const float& )  const;  //                                              (Mariya Denny)
 bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 ```
 

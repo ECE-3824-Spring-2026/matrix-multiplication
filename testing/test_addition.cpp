@@ -38,7 +38,7 @@ TEST_CASE("Matrix addition - with negative numbers") {
     
     Matrix A(2, 2, v1);
     Matrix B(2, 2, v2);
-    Matrix C = A * B;
+    Matrix C = A + B;
     Matrix Expected(2, 2, expected);
     
     REQUIRE(C == Expected);
