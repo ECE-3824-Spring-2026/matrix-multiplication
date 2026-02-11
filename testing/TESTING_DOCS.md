@@ -16,9 +16,9 @@ float& operator()(int i, int j);        // enables float x = A(1,2) -> data retr
 ### The remaining 6 people should test two items each:
 Ensure that there isn't an existing file testing that operation before choosing one to write.
 ```cpp
-float determinant() const;              // return matrix determinant
-int rank() const;                       // return matrix rank
-Matrix transpose() const;                   // B = A.transpose
+float determinant() const;              // return matrix determinant.  (Jass Gatewood)
+int rank() const;                       // return matrix rank           (Jass Gatewood)
+Matrix transpose() const;                   // B = A.transpose  adil chariwala
 Matrix operator+( const Matrix& ) const;    // add Matrix plus Matrix
 Matrix operator-( const Matrix& ) const;
 Matrix operator*( const Matrix& ) const;
