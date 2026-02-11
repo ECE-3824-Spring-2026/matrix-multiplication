@@ -67,10 +67,3 @@ using namespace std;
         // Test getter functions
         printf("\nRows: %d, Columns: %d\n", A.get_n_rows(), A.get_n_cols());
     }
-    
-    int main() {
-        printf("*** Matrix Test ***\n");
-        test();
-        printf("\n*** Complete ***\n");
-        return 0;
-    }

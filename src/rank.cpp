@@ -18,6 +18,15 @@ feburuary 10th, 2026: finsihed all of it, tested and debugged
 #include <cstdio>
 #include "matrix.h"
 
+// Implement operator() here to allow element access in rank calculation
+const float& Matrix::operator()(int i, int j) const {
+    return data[i * cols + j];
+}
+
+float& Matrix::operator()(int i, int j) {
+    return data[i * cols + j];
+}
+
 // from row and collum get row and colloum. get_n_rows(), get_n_cols()
 
 // helpers -----------------------------------------------------------------------------
@@ -120,8 +129,8 @@ static int gauss_rank(const Matrix& A) {
     return rank;
 }
 
-
-void test_rank() {
+int main() {
+    printf("=== Testing Rank Function ===\n\n");
     // Rank 2 example:
     // [1 2 3]
     // [2 4 6]  dependent
@@ -140,4 +149,30 @@ void test_rank() {
         std::fprintf(stdout, "test_rank PASSED\n");
     }
     std::fprintf(stdout, "Rank of the matrix is: %d\n", r);
+    
+    printf("\n=== Additional Tests ===\n");
+    // Test identity matrix
+    float id[] = {1,0,0, 0,1,0, 0,0,1};
+    Matrix I(3, 3, id);
+    printf("\nIdentity matrix 3x3:\n");
+    I.display();
+    printf("Rank: %d (expected 3)\n\n", I.rank());
+    
+    // Test zero matrix
+    float zero[] = {0,0,0, 0,0,0, 0,0,0};
+    Matrix Z(3, 3, zero);
+    printf("Zero matrix 3x3:\n");
+    Z.display();
+    printf("Rank: %d (expected 0)\n\n", Z.rank());
+    
+    // Test rank 1 matrix
+    float r1[] = {1,2,3, 2,4,6, 3,6,9};
+    Matrix R1(3, 3, r1);
+    printf("Rank 1 matrix:\n");
+    R1.display();
+    printf("Rank: %d (expected 1)\n", R1.rank());
+    
+    printf("\n=== All Tests Complete ===\n");
+    return 0;
 }
+
