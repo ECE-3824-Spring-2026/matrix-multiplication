@@ -38,7 +38,7 @@ TEST_CASE("ensure elements mapped correctly") {
 
 }
 
-TEST_CASE("transpose twice returns orginal"){
+TEST_CASE("transpose twice returns orginal matrix"){
     float v[] = { -1.5f, 0.0f,  7.25f,
                    3.0f, 9.0f, -4.0f };
     Matrix x(2, 3, v);
