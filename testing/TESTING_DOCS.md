@@ -4,6 +4,7 @@
 
 They should test the functions that aren't easy to break
 ```cpp
+// (Nathan and Shahzad)
 Matrix(int,int,const float*);           // constructor
 Matrix& operator=(const Matrix&);       // copy assignment A = B
 int get_n_rows() const;                 // return number of rows
@@ -17,16 +18,16 @@ float& operator()(int i, int j);        // enables float x = A(1,2) -> data retr
 ### The remaining 6 people should test two items each:
 Ensure that there isn't an existing file testing that operation before choosing one to write.
 ```cpp
-float determinant() const;              // return matrix determinant.  (Jass Gatewood)
-int rank() const;                       // return matrix rank           (Jass Gatewood)
-Matrix transpose() const;                   // B = A.transpose  adil chariwala
-Matrix operator+( const Matrix& ) const;    // add Matrix plus Matrix
+float determinant() const;                // return matrix determinant.                  (Jass Gatewood)
+int rank() const;                         // return matrix rank                          (Jass Gatewood)
+Matrix transpose() const;                 // B = A.transpose                             (adil chariwala)
+Matrix operator+( const Matrix& ) const;  // add Matrix plus Matrix                      (Timilehin olofinyolemi)
 Matrix operator-( const Matrix& ) const;
-Matrix operator*( const Matrix& ) const;
-Matrix operator+( const float& )  const;    // add constant to Matrix
+Matrix operator*( const Matrix& ) const;  //                                             (Timilehin olofinyolemi)
+Matrix operator+( const float& )  const;  // add constant to Matrix                      (Mohamad)   
 Matrix operator-( const float& )  const;
-Matrix operator*( const float& )  const;  //                                              (Mariya Denny)
-Matrix operator/( const float& )  const;  //                                              (Mariya Denny)
+Matrix operator*( const float& )  const;  //                                             (Mariya Denny)
+Matrix operator/( const float& )  const;  //                                             (Mariya Denny)
 bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 ```
 
