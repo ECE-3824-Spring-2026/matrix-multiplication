@@ -10,7 +10,31 @@
 #include <iostream>
 using namespace std;
 
+    // error handler function
+    static void error_handler(const char* msg) {
+        fprintf(stdout, "ERROR: %s\n", msg);
+    }
+
     Matrix::Matrix(int r, int c, const float* input_data) {
+        // Validate dimensions error handling
+        //
+        if (r <= 0 || c <= 0 ){
+            error_handler("Invalid matrix dimensions. Rows and columns must be positive.");
+            rows = 0;
+            cols = 0;
+            data = nullptr;
+            return;
+        }
+
+        // Validate input data pointer
+        // 
+        if (input_data == nullptr) {
+            error_handler("Input data pointer is null. Matrix will be initialized with zeros.");
+            data = new float[r * c](); // Initialize with zeros
+            rows = r;
+            cols = c;
+            return;
+        }
         // Constructor to initialize the matrix with given dimensions and data
         //
         rows = r;
@@ -30,7 +54,10 @@ using namespace std;
     Matrix::~Matrix() {
         // Destructor to free allocated memory for the matrix
         //
-        delete[] data;
+        if( data != nullptr) {
+            delete[] data;
+            data = nullptr; // Avoid dangling pointer
+        }
     }
 
     int Matrix::get_n_rows() const{
@@ -41,36 +68,26 @@ using namespace std;
  
     int Matrix::get_n_cols() const {
         // Return the number of columns in the matrix
+        //
         return cols;
     }
  
     void Matrix::display() const {
+        // Check if the matrix is empty or has invalid dimensions
+        //
+        if (data == nullptr || rows <= 0 || cols <= 0) {
+            error_handler("Empty or Invalid Matrix.");
+            return;
+        }
         // Display the formatted matrix
+        //
         for (int i = 0; i < rows; i++) {
             fprintf(stdout, "[ ");
             for (int j = 0; j < cols; j++) {
                 // Access element using row-major formula: i * cols + j
+                //
                 fprintf(stdout, "%6.2f", data[i * cols + j]);
             }
             fprintf(stdout, " ]\n");
         }
-    }
-
-    void test() {
-        // Test function to demonstrate the usage of Matrix class
-        float input_data[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
-        Matrix A(3, 3, input_data);
-        
-        // Display the matrix
-        A.display();
-        
-        // Test getter functions
-        printf("\nRows: %d, Columns: %d\n", A.get_n_rows(), A.get_n_cols());
-    }
-    
-    int main() {
-        printf("*** Matrix Test ***\n");
-        test();
-        printf("\n*** Complete ***\n");
-        return 0;
     }
