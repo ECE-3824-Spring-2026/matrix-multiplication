@@ -2,11 +2,9 @@
 // adil chariwala 
 
 #include <catch2/catch_test_macros.hpp>
-#include <stdexcept>
 #include "../matrix.h"
 
 TEST_CASE("0 based index, and matches doc format"){
-    // x = [[1,2,3],[4,5,6]]  (2x3)
     float vals[] = {1,2,3,4,5,6};
     Matrix x(2, 3, vals);
 
@@ -20,8 +18,8 @@ TEST_CASE("ensure transpose dimensions change accordingly") {
     Matrix x(2, 3, vals);
     Matrix y = x.transpose();
 
-    REQUIRE(y.rows() == 3);
-    REQUIRE(y.cols() == 2);
+    REQUIRE(y.get_n_rows() == 3);
+    REQUIRE(y.get_n_cols() == 2);
 }
 
 TEST_CASE("ensure elements mapped correctly") {
@@ -51,7 +49,7 @@ TEST_CASE("transpose twice returns orginal matrix"){
 
     for(int i = 0; i < x.get_n_rows(); i++){
         for(int j = 0; j < x.get_n_cols(); j++){
-            REQUIRE(feq(x2(i,j), x(i,j)));
+            REQUIRE(x2(i,j) == x(i,j));
         }
     }
 }
