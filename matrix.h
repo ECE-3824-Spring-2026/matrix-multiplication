@@ -9,6 +9,7 @@ private:
 
 public:
     Matrix(int,int,const float*);
+    Matrix(const Matrix&);
     Matrix& operator=(const Matrix&);
     ~Matrix();
 
