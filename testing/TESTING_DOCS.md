@@ -9,6 +9,7 @@ Matrix& operator=(const Matrix&);       // copy assignment A = B
 int get_n_rows() const;                 // return number of rows
 int get_n_cols() const;                 // return number of columns
 void display() const;                   // display formatted matrix
+const float& operator()(int,int) const; // enables A(1,2) = 3.14 -> data assignment 
 float& operator()(int i, int j);        // enables float x = A(1,2) -> data retrieval
 ~Matrix();                              // destructor
 ```
