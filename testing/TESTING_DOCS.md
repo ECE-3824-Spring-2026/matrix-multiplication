@@ -19,11 +19,11 @@ Ensure that there isn't an existing file testing that operation before choosing 
 ```cpp
 float determinant() const;              // return matrix determinant.  (Jass Gatewood)
 int rank() const;                       // return matrix rank           (Jass Gatewood)
-Matrix transpose() const;                   // B = A.transpose  adil chariwala
+Matrix transpose() const;                   // B = A.transpose          (adil chariwala)
 Matrix operator+( const Matrix& ) const;    // add Matrix plus Matrix
 Matrix operator-( const Matrix& ) const;
-Matrix operator*( const Matrix& ) const;
-Matrix operator+( const float& )  const;    // add constant to Matrix
+Matrix operator*( const Matrix& ) const;                              // (Shazad)
+Matrix operator+( const float& )  const;    // add constant to Matrix (Mohamad Charabi)
 Matrix operator-( const float& )  const;
 Matrix operator*( const float& )  const;  //                                              (Mariya Denny)
 Matrix operator/( const float& )  const;  //                                              (Mariya Denny)
