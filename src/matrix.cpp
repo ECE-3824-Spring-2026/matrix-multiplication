@@ -40,6 +40,7 @@ Matrix Matrix::operator-(const Matrix& other) const{
         return(*result);
     }
 
+    // Throw in some comments 
     else{
         std :: cout << "Error";
         throw std::runtime_error("");
