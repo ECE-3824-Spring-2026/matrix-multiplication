@@ -1,4 +1,37 @@
 // Jass Gatewood 
+/*
+ * test_determinant.cpp serves as a testing file implemented using catch to check the determinant function.
+ * Test Cases:
+ *  - Basic Determinant Values
+ *      • 1×1 matrices
+ *      • 2×2 and 3×3 matrices with known determinants
+ *
+ *  - Zero and Identity Matrices
+ *      • det(0-matrix) = 0
+ *      • det(I) = 1 for all sizes
+ *
+ *  - Row Operations
+ *      • Row swap flips the sign of the determinant
+ *      • Scaling a row scales the determinant
+ *      • Adding a multiple of one row to another leaves det unchanged
+ *
+ *  - Triangular Matrices
+ *      • Determinant equals the product of diagonal entries
+ *
+ *  - Linearity and Non-Linearity
+ *      • det(kA) = k^n det(A)
+ *      • det(A + B) ≠ det(A) + det(B)
+ *
+ *  - Singular vs. Non-Singular Matrices
+ *      • Singular matrices have determinant 0
+ *      • Non-singular matrices have non-zero determinant
+ *
+ *  - Miscellaneous Structural Tests
+ *      • Determinant of matrices with repeated rows
+ *      • Determinant of matrices with proportional rows
+ *
+ */
+
 
 #include <iostream>
 #include <catch2/catch_test_macros.hpp>
