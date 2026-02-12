@@ -4,6 +4,7 @@
 
 They should test the functions that aren't easy to break
 ```cpp
+// (Nathan and Shahzad)
 Matrix(int,int,const float*);           // constructor
 Matrix& operator=(const Matrix&);       // copy assignment A = B
 int get_n_rows() const;                 // return number of rows
@@ -25,8 +26,8 @@ Matrix operator-( const Matrix& ) const;           // adil chariwala
 Matrix operator*( const Matrix& ) const;                              //    (Shahzad)
 Matrix operator+( const float& )  const;    // add constant to Matrix    (Mohamad Charabi)
 Matrix operator-( const float& )  const;
-Matrix operator*( const float& )  const;  //                                              (Mariya Denny)
-Matrix operator/( const float& )  const;  //                                              (Mariya Denny)
+Matrix operator*( const float& )  const;  //                                             (Mariya Denny)
+Matrix operator/( const float& )  const;  //                                             (Mariya Denny)
 bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 ```
 
