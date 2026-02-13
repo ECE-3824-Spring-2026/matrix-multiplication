@@ -69,7 +69,26 @@ Matrix Matrix::operator/(const float& k) const {
     delete[] vals;
     return result;
 }
+Matrix& Matrix::operator=(const Matrix& other) {
 
+    if (this == &other) return *this;
+
+    float* nd = new float[other.rows * other.cols];
+
+    for (int k = 0; k < other.rows * other.cols; ++k) nd[k] = other.data[k];
+
+    delete[] data;
+
+    data = nd;
+
+    rows = other.rows;
+
+    cols = other.cols;
+
+    return *this;
+
+}
+ 
 
 float Matrix::determinant() const {
 
