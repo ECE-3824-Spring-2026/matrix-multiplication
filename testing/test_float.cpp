@@ -16,4 +16,8 @@ Matrix A(2, 2, vals);
 //here we are testing if scalar multiplication works and storing the new result in matrixB
 //this calls the operator* and multiplies each element in A by 2
 Matrix B = A * 2.0f;
+REQUIRE(B(0,0) == Approx(2.0f)); 
+REQUIRE(B(0,1) == Approx(4.0f)); 
+REQUIRE(B(1,0) == Approx(6.0f)); 
+REQUIRE(B(1,1) == Approx(8.0f));
 }
