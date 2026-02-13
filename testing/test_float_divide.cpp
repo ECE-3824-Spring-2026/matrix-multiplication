@@ -62,6 +62,15 @@ TEST_CASE("Scalar division by Decimal number"){
     REQUIRE(B(1,1) == Approx(8.0f));// 4/0.5=8
 }
 
+TEST_CASE("Scalar division with negative decimal") {
+    float vals[] = {1, -2, 3, -4};
+    Matrix A(2,2,vals);
+    Matrix B = A / -0.5f; // divide by -0.5 = multiply by -2
+    REQUIRE(B(0,0) == Approx(-2.0f));
+    REQUIRE(B(0,1) == Approx(4.0f));
+    REQUIRE(B(1,0) == Approx(-6.0f));
+    REQUIRE(B(1,1) == Approx(8.0f));
+}
 
 TEST_CASE("Scalar division Does not modify original matrix"){
     //array of 4 elements to fill the matrix
