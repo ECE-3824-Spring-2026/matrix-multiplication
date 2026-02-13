@@ -69,6 +69,8 @@ Matrix Matrix::operator/(const float& k) const {
     delete[] vals;
     return result;
 }
+
+
 Matrix& Matrix::operator=(const Matrix& other) {
 
     if (this == &other) return *this;
@@ -87,6 +89,14 @@ Matrix& Matrix::operator=(const Matrix& other) {
 
     return *this;
 
+}    
+
+bool Matrix::operator==(const Matrix& other) const {
+    if (rows != other.rows || cols != other.cols) return false;
+    for (int k = 0; k < rows * cols; ++k) {
+        if (data[k] != other.data[k]) return false;
+    }
+    return true;
 }
  
 
