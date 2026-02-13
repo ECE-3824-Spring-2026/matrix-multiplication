@@ -25,5 +25,6 @@ class Matrix{
     Matrix operator-( const float& )  const;
     Matrix operator*( const float& )  const;
     Matrix operator/( const float& )  const;
+    bool operator==(const Matrix& ) const;    // determine if two matrices are equal
 
 };
