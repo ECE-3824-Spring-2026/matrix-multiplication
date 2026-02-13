@@ -20,8 +20,8 @@ TEST_CASE("ensure transpose dimensions change accordingly") {
     Matrix x(2, 3, vals);
     Matrix y = x.transpose();
 
-    REQUIRE(y.rows() == 3);
-    REQUIRE(y.cols() == 2);
+    REQUIRE(y.get_n_rows() == 3);
+    REQUIRE(y.get_n_cols() == 2);
 }
 
 TEST_CASE("ensure elements mapped correctly") {
