@@ -62,6 +62,18 @@ TEST_CASE("Scalar Multiplication with decimal numbers"){
     REQUIRE(B(1,1)== Approx(4.0f));//8*0.5=4
 }
 
+TEST_CASE("Scalar multiplication with negative decimal") {
+    float vals[] = {1, -2, 3, -4};
+    Matrix A(2, 2, vals);
+
+    Matrix B = A * -0.5f;   // multiply by negative decimal
+
+    REQUIRE(B(0,0) == Approx(-0.5f));  // 1 * -0.5 = -0.5
+    REQUIRE(B(0,1) == Approx(1.0f));   // -2 * -0.5 = 1
+    REQUIRE(B(1,0) == Approx(-1.5f));  // 3 * -0.5 = -1.5
+    REQUIRE(B(1,1) == Approx(2.0f));   // -4 * -0.5 = 2
+}
+
 TEST_CASE("Scalar multiplication does not modify original matrix"){
     float vals[]={1,2,3,4};
     Matrix A(2,2,vals);
