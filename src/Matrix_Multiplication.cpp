@@ -1,14 +1,15 @@
 #include "matrix.h"
 #include <stdexcept>
+#include <iostream>
 
 Matrix Matrix::operator*(const Matrix& other) const {
     // Basic check: columns of A must match rows of B
-    if (this->n_cols != other.get_n_rows()) {
+    if (this->cols != other.get_n_rows()) {
         throw std::invalid_argument("Incompatible dimensions");
     }
 
     // Define dimensions for the new matrix
-    int rows = this->n_rows;
+    int rows = this->rows;
     int cols = other.get_n_cols();
     float* result_vals = new float[rows * cols];
 
@@ -16,7 +17,7 @@ Matrix Matrix::operator*(const Matrix& other) const {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             float sum = 0;
-            for (int k = 0; k < this->n_cols; k++) {
+            for (int k = 0; k < this->cols; k++) {
                 // multiply row element by column element
                 sum += (*this)(i, k) * other(k, j);
             }
