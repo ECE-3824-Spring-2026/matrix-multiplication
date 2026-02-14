@@ -1,5 +1,9 @@
 # Debug Notes
 
+```C++
+code is seg faulting before the remaining test can be ran.
+```
+
 ## Catch2
 
 two different versions of catch2 were being used in the testing folder. Several files where using catch2 2v. The makefile supported catch2 3v which required:
