@@ -49,4 +49,4 @@ Matrix::Matrix(int r, int c, const float* input_data) {
     }
 ```
 when data was being used elsewhere in the program trying to retrieve values it did not have from being assigned nullptr. 
-Used the same idea but instead initialized the matrix with zeros. 
+Used the same idea but instead initialized the matrix with zeros. None of the other test would run with this error. 
