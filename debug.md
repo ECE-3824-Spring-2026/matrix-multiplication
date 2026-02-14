@@ -18,3 +18,5 @@ A test code in constructor is failing due to this constructor implementation
 
 when data was being used elsewhere in the program trying to retrieve values it did not have from being assigned nullptr. 
 Used the same idea but instead initialized the matrix with zeros. None of the other test would run with this error. 
+
+operator() needed error check, still getting seg fault. 
