@@ -17,15 +17,23 @@ feburuary 10th, 2026: finsihed all of it, tested and debugged
 
 #include <cstdio>
 #include "matrix.h"
+#include<stdexcept>
 
-// Implement operator() here to allow element access in rank calculation
-const float& Matrix::operator()(int i, int j) const {
-    return data[i * cols + j];
-}
 
 float& Matrix::operator()(int i, int j) {
+    if (i < 0 || i >= rows || j < 0 || j >= cols) {
+        throw std::out_of_range("Matrix index out of bounds");
+    }
     return data[i * cols + j];
 }
+
+const float& Matrix::operator()(int i, int j) const {
+    if (i < 0 || i >= rows || j < 0 || j >= cols) {
+        throw std::out_of_range("Matrix index out of bounds");
+    }
+    return data[i * cols + j];
+}
+
 
 // from row and collum get row and colloum. get_n_rows(), get_n_cols()
 
