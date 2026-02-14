@@ -8,61 +8,86 @@
 
 #include "../matrix.h"
 #include <iostream>
-#include <stdexcept>
 using namespace std;
 
-Matrix::Matrix(int r, int c, const float* input_data) {
-    // 1. invalid dimensions → throw
-    if (r <= 0 || c <= 0) {
-        throw std::invalid_argument("Invalid matrix dimensions");
+    // error handler function
+    static void error_handler(const char* msg) {
+        fprintf(stdout, "ERROR: %s\n", msg);
     }
 
-    rows = r;
-    cols = c;
-
-    // 2. allocate memory
-    data = new float[rows * cols];
-
-    // 3. null data = zero-initialize
-    if (input_data == nullptr) {
-        for (int i = 0; i < rows * cols; ++i) {
-            data[i] = 0.0f;
+    Matrix::Matrix(int r, int c, const float* input_data) {
+        // Validate dimensions error handling
+        //
+        if (r <= 0 || c <= 0 ){
+            error_handler("Invalid matrix dimensions. Rows and columns must be positive.");
+            rows = 0;
+            cols = 0;
+            data = nullptr;
+            return;
         }
-        return;
-    }
 
-    // 4. valid data = copy
-    for (int i = 0; i < rows * cols; ++i) {
-        data[i] = input_data[i];
-    }
-}
-
-Matrix::~Matrix() {
-    if (data != nullptr) {
-        delete[] data;
-        data = nullptr;
-    }
-}
-
-int Matrix::get_n_rows() const {
-    return rows;
-}
-
-int Matrix::get_n_cols() const {
-    return cols;
-}
-
-void Matrix::display() const {
-    if (data == nullptr || rows <= 0 || cols <= 0) {
-        
-        return;
-    }
-
-    for (int i = 0; i < rows; i++) {
-        fprintf(stdout, "[ ");
-        for (int j = 0; j < cols; j++) {
-            fprintf(stdout, "%6.2f", data[i * cols + j]);
+        // Validate input data pointer
+        // 
+        if (input_data == nullptr) {
+            error_handler("Input data pointer is null. Matrix will be initialized with zeros.");
+            data = new float[r * c](); // Initialize with zeros
+            rows = r;
+            cols = c;
+            return;
         }
-        fprintf(stdout, " ]\n");
+        // Constructor to initialize the matrix with given dimensions and data
+        //
+        rows = r;
+        cols = c;
+
+        // Allocate memory for 1D array (row-major order)
+        //
+        data = new float[rows * cols];
+
+        // Copy the input data into the matrix
+        //
+        for (int i = 0; i < rows * cols; i++) {
+            data[i] = input_data[i];
+        }
     }
-}
+    
+    Matrix::~Matrix() {
+        // Destructor to free allocated memory for the matrix
+        //
+        if( data != nullptr) {
+            delete[] data;
+            data = nullptr; // Avoid dangling pointer
+        }
+    }
+
+    int Matrix::get_n_rows() const{
+        // Return the number of rows in the matrix
+        //
+        return rows;
+    }
+ 
+    int Matrix::get_n_cols() const {
+        // Return the number of columns in the matrix
+        //
+        return cols;
+    }
+ 
+    void Matrix::display() const {
+        // Check if the matrix is empty or has invalid dimensions
+        //
+        if (data == nullptr || rows <= 0 || cols <= 0) {
+            error_handler("Empty or Invalid Matrix.");
+            return;
+        }
+        // Display the formatted matrix
+        //
+        for (int i = 0; i < rows; i++) {
+            fprintf(stdout, "[ ");
+            for (int j = 0; j < cols; j++) {
+                // Access element using row-major formula: i * cols + j
+                //
+                fprintf(stdout, "%6.2f", data[i * cols + j]);
+            }
+            fprintf(stdout, " ]\n");
+        }
+    }
