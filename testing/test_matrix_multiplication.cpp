@@ -1,8 +1,8 @@
 // Timilehin olofinyolemi 
 // Matrix operator*( const Matrix& ) const;
 
-#define CATCH_CONFIG_MAIN 
-#include "catch.hpp"
+//#define CATCH_CONFIG_MAIN 
+#include <catch2/catch_test_macros.hpp>
 #include "../matrix.h"
 
 TEST_CASE("Matrix multiplication - basic 2x2") {

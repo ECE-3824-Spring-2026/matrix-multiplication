@@ -1,8 +1,9 @@
 // Mohamad Charabi
 // Testing Matrix + Constant
 
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+//#define CATCH_CONFIG_MAIN
+//#include "catch.hpp"
+#include <catch2/catch_test_macros.hpp>
 #include "../matrix.h"
 
 TEST_CASE("Matrix + constant - basic 2x2") {
