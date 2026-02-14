@@ -32,4 +32,4 @@ TEST_CASE("Memory Issues"){
 ```
 The test is expecting a invalid argument. the original constructor did not have many catches for error checks. The rewritten function to reflect same behavior and idea does not have this error as well. 
 
-An row and column size of 100000 with an array of 4 floats would have been good for an invalid argument because the array size given and requested row and column do not match. Commented out this test, to see the other run. 
+A row and column size of 100000 with an array of 4 floats would have been good for an invalid argument because the array size given and requested row and column do not match. The constructor does not catch this kind error. Commented out this test, to see the other run. 
