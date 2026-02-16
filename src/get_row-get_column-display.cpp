@@ -29,10 +29,12 @@ using namespace std;
         // Validate input data pointer
         // 
         if (input_data == nullptr) {
-            error_handler("Input data pointer is null. Matrix will be initialized with zeros.");
+            // error_handler("Input data pointer is null. Matrix will be initialized with zeros.");
             data = new float[r * c](); // Initialize with zeros
             rows = r;
             cols = c;
+            for (int k = 0 ; k < r*c ; k++)
+                data[k] = 0;
             return;
         }
         // Constructor to initialize the matrix with given dimensions and data
