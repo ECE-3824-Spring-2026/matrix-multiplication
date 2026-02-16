@@ -17,12 +17,6 @@ TEST_CASE("Matrix addition - basic 2x2") {
     Matrix C = A + B;
     Matrix Expected(2, 2, expected);
     
-    C.display();
-
-    std::cout << std::endl;
-
-    Expected.display();
-
     REQUIRE(C == Expected);
 }
 
@@ -31,12 +25,12 @@ TEST_CASE("Matrix addition - different dimensions 2x3") {
     float v2[] = {2, 3, 4, 5, 6, 7};
     float expected[] = {3, 5, 7, 9, 11, 13};
     
-    // Matrix A(2, 3, v1);
-    // Matrix B(2, 3, v2);
-    // Matrix C = A + B;
-    // Matrix Expected(2, 3, expected);
+    Matrix A(2, 3, v1);
+    Matrix B(2, 3, v2);
+    Matrix C = A + B;
+    Matrix Expected(2, 3, expected);
     
-    // REQUIRE(C == Expected);
+    REQUIRE(C == Expected);
 }
 
 TEST_CASE("Matrix addition - with negative numbers") {
@@ -44,20 +38,20 @@ TEST_CASE("Matrix addition - with negative numbers") {
     float v2[] = {1, -2, 3, -4};
     float expected[] = {0, 0, 0, 0};
     
-    // Matrix A(2, 2, v1);
-    // Matrix B(2, 2, v2);
-    // Matrix C = A + B;
-    // Matrix Expected(2, 2, expected);
+    Matrix A(2, 2, v1);
+    Matrix B(2, 2, v2);
+    Matrix C = A + B;
+    Matrix Expected(2, 2, expected);
     
-    // REQUIRE(C == Expected);
+    REQUIRE(C == Expected);
 }
 
 TEST_CASE("Matrix addition - incompatible dimensions throws error") {
     float v1[] = {1, 2, 3, 4};
     float v2[] = {1, 2, 3, 4, 5, 6};
     
-    // Matrix A(2, 2, v1);
-    // Matrix B(2, 3, v2);
+    Matrix A(2, 2, v1);
+    Matrix B(2, 3, v2);
     
-    // REQUIRE_THROWS_AS(A + B, std::invalid_argument);
+    REQUIRE_THROWS_AS(A + B, std::invalid_argument);
 }

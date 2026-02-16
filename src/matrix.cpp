@@ -57,7 +57,8 @@ Matrix Matrix::operator*(const float& k) const {
 
 Matrix Matrix::operator/(const float& k) const {
     if (k == 0.0f) {
-        return *this;
+        // return *this;
+        throw std::domain_error("divide by zero");
     }
 
     float* vals = new float[rows * cols];
@@ -153,8 +154,8 @@ Matrix Matrix::operator+(const Matrix& other) const{
         Matrix result(this->rows,this->cols,nullptr);
         
         // find dimensions of Matrix A and Matrix B
-        for (int i; i < other.get_n_rows(); i++){
-            for (int j; j < other.get_n_rows(); j++){
+        for (int i =0; i < other.get_n_rows(); i++){
+            for (int j=0; j < other.get_n_cols(); j++){
                 result(i,j) = this->operator()(i,j) + other(i,j);
                 // result->operator()(i,j) = other.operator()(i,j) + this->operator()(i,j);
           }
@@ -164,8 +165,8 @@ Matrix Matrix::operator+(const Matrix& other) const{
     }
 
     else{
-        std :: cout << "Error";
-        throw std::runtime_error("");
+        // std :: cout << "Error";
+        throw std::invalid_argument("Error with addition operator");
     } 
 }
 
@@ -178,9 +179,10 @@ Matrix Matrix::operator-(const Matrix& other) const{
         Matrix * result = new Matrix(this->get_n_rows(), this->get_n_cols(), nullptr);        
         
         // find dimensions of Matrix A and Matrix B
-        for (int i; i < other.get_n_rows(); i++){
-            for (int j; j < other.get_n_rows(); j++){
-            result->operator()(i,j) = other.operator()(i,j) - this->operator()(i,j);
+        for (int i=0; i < other.get_n_rows(); i++){
+            for (int j=0; j < other.get_n_cols(); j++){
+            // result->operator()(i,j) = other.operator()(i,j) - this->operator()(i,j);
+            result->operator()(i,j) = this->operator()(i,j) - other.operator()(i,j);
           }
         }
         return(*result);
@@ -188,7 +190,7 @@ Matrix Matrix::operator-(const Matrix& other) const{
 
     // Throw in some comments 
     else{
-        std :: cout << "Error";
-        throw std::runtime_error("");
+        // std :: cout << "Error";
+        throw std::invalid_argument("");
     }
 }

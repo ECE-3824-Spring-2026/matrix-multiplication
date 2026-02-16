@@ -47,5 +47,6 @@ TEST_CASE("checks matrices for compatability") {
     Matrix A(2, 3, a_vals);
     Matrix B(2, 2, b_vals);
 
-    REQUIRE_THROWS_AS(A - B, std::logic_error);
+    // REQUIRE_THROWS_AS(A - B, std::logic_error);
+    REQUIRE_THROWS_AS(A - B, std::invalid_argument);
 }

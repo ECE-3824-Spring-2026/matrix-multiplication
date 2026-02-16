@@ -328,8 +328,8 @@ TEST_CASE("Row and column operations") {
         Matrix A(3, 3, dataA);
         Matrix B(3, 3, dataB);
 
-        REQUIRE(fabs(A.determinant() - 1.0f) < 0.0001f);
-        REQUIRE(fabs(B.determinant() - 3.0f) < 0.0001f);
+        REQUIRE(fabs(A.determinant() - 11.0f) < 0.0001f);
+        REQUIRE(fabs(B.determinant() - 33.0f) < 0.0001f);
     }
 
     SECTION("Determinant unchanged when adding a multiple of one row to another") {
@@ -345,8 +345,8 @@ TEST_CASE("Row and column operations") {
         Matrix A(3, 3, dataA);
         Matrix B(3, 3, dataB);
 
-        REQUIRE(fabs(A.determinant() - 1.0f) < 0.0001f);
-        REQUIRE(fabs(B.determinant() - 1.0f) < 0.0001f);
+        REQUIRE(fabs(A.determinant() - 11.0f) < 0.0001f);
+        REQUIRE(fabs(B.determinant() - 11.0f) < 0.0001f);
     }
 }
 

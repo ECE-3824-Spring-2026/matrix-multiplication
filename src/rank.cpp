@@ -17,13 +17,22 @@ feburuary 10th, 2026: finsihed all of it, tested and debugged
 
 #include <cstdio>
 #include "matrix.h"
+#include <iostream>
 
 // Implement operator() here to allow element access in rank calculation
 const float& Matrix::operator()(int i, int j) const {
+    if ((i<0) || (j<0))
+        throw std::invalid_argument("negative matrix indexing not allowed");
+    if ((i>=rows) || (j>=cols))
+        throw std::invalid_argument("out of bounds matrix indexing not allowed");
     return data[i * cols + j];
 }
 
 float& Matrix::operator()(int i, int j) {
+    if ((i<0) || (j<0))
+        throw std::invalid_argument("negative matrix indexing not allowed");
+    if ((i>=rows) || (j>=cols))
+        throw std::invalid_argument("out of bounds matrix indexing not allowed");
     return data[i * cols + j];
 }
 

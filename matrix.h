@@ -12,6 +12,7 @@ class Matrix{
 
     static const int MAX = 100; // maximum size of the matrix
     Matrix(int,int,const float*);           // constructor
+    Matrix(const Matrix&);
     Matrix& operator=(const Matrix&);       // copy assignment A = B
     ~Matrix();                              // destructor
 

@@ -15,16 +15,28 @@ using namespace std;
         fprintf(stdout, "ERROR: %s\n", msg);
     }
 
+    Matrix::Matrix(const Matrix& other){
+        rows = other.rows;
+        cols = other.cols;
+        data = new float [rows*cols];
+        for (int i = 0 ; i < rows*cols; i++)
+            data[i] = other.data[i];
+    }
+
     Matrix::Matrix(int r, int c, const float* input_data) {
         // Validate dimensions error handling
         //
         if (r <= 0 || c <= 0 ){
-            error_handler("Invalid matrix dimensions. Rows and columns must be positive.");
-            rows = 0;
-            cols = 0;
-            data = nullptr;
-            return;
+            // error_handler("Invalid matrix dimensions. Rows and columns must be positive.");
+            throw std::invalid_argument("invalid number of rows or columns");
+            // rows = 0;
+            // cols = 0;
+            // data = nullptr;
+            // return;
         }
+
+        if (r>1000 && c > 1000)
+            throw std::invalid_argument("matrix exceeds maximum size");
 
         // Validate input data pointer
         // 
