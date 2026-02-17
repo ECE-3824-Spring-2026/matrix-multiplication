@@ -19,7 +19,10 @@ feburuary 10th, 2026: finsihed all of it, tested and debugged
 #include "matrix.h"
 #include<stdexcept>
 
-
+// found error for constructor due to this function.
+// test expected invalid and the function gave out of bounds. 
+// THis is more a conversation about which errors are to be used for
+// invalid occurrences between coding and testing team. 
 float& Matrix::operator()(int i, int j) {
     if (i < 0 || i >= rows || j < 0 || j >= cols) {
         throw std::out_of_range("Matrix index out of bounds");
