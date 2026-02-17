@@ -146,45 +146,36 @@ float Matrix::determinant() const {
 Matrix Matrix::operator+(const Matrix& other) const{
 
     // Check that rows == rows and cols == cols 
-    if ((this->get_n_rows() == other.get_n_rows())  && (this->get_n_cols() == other.get_n_cols())){
-        
-        Matrix * result = new Matrix(this->get_n_rows(), this->get_n_cols(), nullptr);
-        
-        // find dimensions of Matrix A and Matrix B
-        for (int i; i < other.get_n_rows(); i++){
-            for (int j; j < other.get_n_rows(); j++){
-            result->operator()(i,j) = other.operator()(i,j) + this->operator()(i,j);
-          }
-        }
-        return(*result);
-    }
-
-    else{
-        std :: cout << "Error";
-        throw std::runtime_error("");
+    if (rows != other.rows || cols != other.cols) { throw std::invalid_argument("Matrix dimensions must match for addition"); }
+       
+       
+    float* vals = new float[rows * cols]; 
+    for (int i = 0; i < rows; i++) { 
+        for (int j = 0; j < cols; j++) { 
+            vals[i * cols + j] = (*this)(i, j) + other(i, j); 
+        } 
     } 
+    Matrix result(rows, cols, vals); 
+    delete[] vals; 
+    return result;
+    
 }
 
 
 Matrix Matrix::operator-(const Matrix& other) const{
 
     // Check that rows == rows and cols == cols 
-    if ((this->get_n_rows() == other.get_n_rows())  && (this->get_n_cols() == other.get_n_cols())){
-        
-        Matrix * result = new Matrix(this->get_n_rows(), this->get_n_cols(), nullptr);        
-        
-        // find dimensions of Matrix A and Matrix B
-        for (int i; i < other.get_n_rows(); i++){
-            for (int j; j < other.get_n_rows(); j++){
-            result->operator()(i,j) = other.operator()(i,j) - this->operator()(i,j);
-          }
-        }
-        return(*result);
-    }
-
-    // Throw in some comments 
-    else{
-        std :: cout << "Error";
-        throw std::runtime_error("");
-    }
+    if (rows != other.rows || cols != other.cols) { throw std::invalid_argument("Matrix dimensions must match for addition"); }
+       
+       
+    float* vals = new float[rows * cols]; 
+    for (int i = 0; i < rows; i++) { 
+        for (int j = 0; j < cols; j++) { 
+            vals[i * cols + j] = (*this)(i, j) - other(i, j); 
+        } 
+    } 
+    Matrix result(rows, cols, vals); 
+    delete[] vals; 
+    return result;
+    
 }
