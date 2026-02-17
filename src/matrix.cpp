@@ -75,6 +75,10 @@ Matrix& Matrix::operator=(const Matrix& other) {
 
     if (this == &other) return *this;
 
+    rows = other.rows;
+
+    cols = other.cols;
+
     float* nd = new float[other.rows * other.cols];
 
     for (int k = 0; k < other.rows * other.cols; ++k) nd[k] = other.data[k];
@@ -82,10 +86,6 @@ Matrix& Matrix::operator=(const Matrix& other) {
     delete[] data;
 
     data = nd;
-
-    rows = other.rows;
-
-    cols = other.cols;
 
     return *this;
 
