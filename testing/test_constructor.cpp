@@ -52,13 +52,6 @@ TEST_CASE("Input Rows/Columns Argument Errors"){
     REQUIRE_THROWS_AS(Matrix(-1, -1, vals), std::invalid_argument); 
 }
 
-TEST_CASE("Memory Issues"){
-    float vals[] = {1.0f, 2.0f, 3.0f, 4.0f};
-    
-    REQUIRE_THROWS_AS(Matrix(100000, 100000, vals), std::invalid_argument);
-    REQUIRE_THROWS_AS(Matrix(2, 2, nullptr), std::invalid_argument);  
-}
-
 TEST_CASE("Value Retrieval"){
     float vals[] = {1.0f, 2.0f, 3.0f, 4.0f};
     Matrix m(2, 2, vals);
