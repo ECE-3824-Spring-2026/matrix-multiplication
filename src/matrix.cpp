@@ -120,7 +120,7 @@ Matrix Matrix::operator*(const float& k) const {
 
 Matrix Matrix::operator/(const float& k) const {
     if (k == 0.0f) {
-        return *this;
+        throw std::invalid_argument("Division by zero is not allowed.");
     }
 
     float* vals = new float[rows * cols];
@@ -228,8 +228,8 @@ Matrix Matrix::operator+(const Matrix& other) const{
     }
 
     else{
-        std :: cout << "Error";
-        throw std::runtime_error("");
+        // std :: cout << "Error";
+        throw std::invalid_argument("Matrix dimensions must match for addition.");
     } 
 }
 
@@ -257,7 +257,7 @@ Matrix Matrix::operator-(const Matrix& other) const{
 
     // Throw in some comments 
     else{
-        std :: cout << "Error";
-        throw std::runtime_error("");
+        // std :: cout << "Error";
+        throw std::invalid_argument("Matrix dimensions must match for subtraction.");
     }
 }
