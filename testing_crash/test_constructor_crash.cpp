@@ -9,16 +9,19 @@ g++ -c test_constructor.cpp
 #include <catch2/catch_test_macros.hpp>
 #include <stdexcept>
 
-TEST_CASE("Memory Issues"){
+TEST_CASE("nullptr data input"){
+    try {
+        Matrix m(2, 2, nullptr);
+        m(0,0);
+    } catch (...) {}
+    SUCCEED();
+}
+
+TEST_CASE("very large matrix - bad allocation"){
     float vals[] = {1.0f, 2.0f, 3.0f, 4.0f};
     
     try {
         Matrix(100000, 100000, vals);
     } catch (...) {}
-
-    try {
-        Matrix(2, 2, nullptr);
-    } catch (...) {}
-
     SUCCEED();
 }
