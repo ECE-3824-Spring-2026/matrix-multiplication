@@ -1,0 +1,85 @@
+Contribution Report — ECE 3824 Spring 2026
+Matrix Multiplication Project
+Generated: 2026-02-19
+================================================================================
+
+COMMIT COUNTS (all branches, no merges, deduplicated)
+------------------------------------------------------
+Jasmine Gatewood       27   Most active; heavy debugging and fixes
+Nathan Pervin          15   Two git identities ("NathanPervin" + "Nathan Pervin")
+adil_chariwala         19   See notes below
+Iyad Obeid             22
+mariyadenny            12   Mostly test cases (float ops)
+ZhaoXiang Lan          11   Constructor, display; still active as of Feb 18
+Dwight (dwmartinez13)   7   Scalar add/sub/mult/div
+Shahzadfuze             7   Destructor test work
+samuelgeorgi            5   Matrix add/sub implementation
+Chanyoung Kim           5   Two git identities; coding team
+drew-7                  4   Matrix multiplication
+timiolofin              4   Addition/multiplication tests
+Kinsfury                3   Transpose function
+Mohamad Charabi         2   Test add/subtract scaffolding
+tony mejia-cuba         2   Wrote rank.cpp
+Jennifer Lam            1   Determinant implementation
+Dan Mozol               1   "Line Spacing" — one whitespace commit
+
+
+LOW-EFFORT CONTRIBUTORS
+-----------------------
+Dan Mozol
+  - 1 commit, content was purely whitespace/line spacing
+
+adil_chariwala
+  - 19 commits but a large fraction are literally "added name", "added names",
+    "more name", "added name again" — padding the count without substantive
+    contribution
+
+Mohamad Charabi
+  - 2 commits, both early-stage scaffolding
+
+Jennifer Lam
+  - 1 commit, though it was at least real code (determinant implementation)
+
+
+RECENTLY ACTIVE (Feb 13–18, near deadline)
+------------------------------------------
+Jasmine Gatewood      Feb 14–17   Debugging, seg fault fixes, constructor fixes
+ZhaoXiang Lan         Feb 18      Merging, constructor/matrix ops fixes
+Nathan Pervin         Feb 17–18   Test case fixes, crash isolation
+Iyad Obeid            Feb 16      Class debugging session
+
+
+PULL REQUESTS
+-------------
+#16  Coding                                        ZhaoXiangLan   merged  2026-02-13
+#15  Please merge testing into main                NathanPervin   merged  2026-02-13
+#14  made a few edits                              mariyadenny    merged  2026-02-13
+#13  Adding scalar multiplication/division tests   mariyadenny    merged  2026-02-13
+#12  Added subtraction by constant/equality tests  NathanPervin   merged  2026-02-13
+#11  merge test-determinant-rank into testing      jassgatewood   merged  2026-02-12
+#10  Get row get column display                    ZhaoXiangLan   merged  2026-02-11
+#9   Coding                                        tmejiac1-dev   closed, NOT merged
+#8   Get row get column display                    ZhaoXiangLan   merged  2026-02-09
+#7   Fixed return statement                        Kinsfury       merged  2026-02-09
+#6   Updated syntax                                Kinsfury       merged  2026-02-09
+#5   Added Transpose Function                      Kinsfury       merged  2026-02-09
+#4   Constant add sub multiply division            dwmartinez13   closed, NOT merged
+#3   added gitignore                               dwmartinez13   closed, NOT merged
+#2   operator_kim                                  praioe         closed, NOT merged
+#1   adding constant add/sub/mult/div              dwmartinez13   merged  2026-02-06
+
+
+BRANCHES
+--------
+origin/coding                       last: Jenny (Jennifer Lam)      2026-02-11
+origin/coding-kim                   last: chanyoung_kim             2026-02-12
+origin/coding_debug                 last: ZhaoXiang Lan             2026-02-18
+origin/constant-add-sub-multiply-division  last: Iyad Obeid         2026-02-06
+origin/GET-ROW_GET-COLUMN_DISPLAY   last: Iyad Obeid                2026-02-06
+origin/main                         last: Iyad Obeid                2026-02-13
+origin/main-debug-obeid             last: Iyad Obeid                2026-02-16
+origin/main_debug_gatewood          last: Jasmine Gatewood          2026-02-17
+origin/OBEID-ONLY                   last: Iyad Obeid                2026-02-09
+origin/RANK                         last: Iyad Obeid                2026-02-04
+origin/testing                      last: Nathan Pervin             2026-02-18
+origin/testing-addition-multiplication  last: timiolofin            2026-02-09

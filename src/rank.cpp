@@ -85,10 +85,10 @@ static int gauss_rank(const Matrix& A) {
     }
 
     // copy matrix into local temp array so we don't modify the original matrix
-    float temp[MAX][MAX];
+    float* temp = new float[n * m];
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
-            temp[i][j] = A(i, j);
+            temp[i * m + j] = A(i, j);
         }
     }
 
@@ -100,22 +100,22 @@ static int gauss_rank(const Matrix& A) {
         // find the pivot row with the largest absolute value in the current column
         int pivot_row = row;
         for (int r = row + 1; r < n; ++r) {
-            if (myAbs(temp[r][col]) > myAbs(temp[pivot_row][col])) {
+            if (myAbs(temp[r * m + col]) > myAbs(temp[pivot_row * m + col])) {
                 pivot_row = r;
             }
         }
 
         // if the pivot element is close to zero, skip this column
-        if (myAbs(temp[pivot_row][col]) < EPSILON) {
+        if (myAbs(temp[pivot_row * m + col]) < EPSILON) {
             continue;
         }
 
         // swap the current row with the pivot row
         if (pivot_row != row) {
             for (int c = 0; c < m; ++c) {
-                float t = temp[row][c];
-                temp[row][c] = temp[pivot_row][c];
-                temp[pivot_row][c] = t;
+                float t = temp[row * m + c];
+                temp[row * m + c] = temp[pivot_row * m + c];
+                temp[pivot_row * m + c] = t;
             }
         }
 
@@ -125,9 +125,9 @@ static int gauss_rank(const Matrix& A) {
         for (int r = 0; r < n; ++r) {
             if (r == row) continue;
 
-            float factor = temp[r][col] / temp[row][col];
+            float factor = temp[r * m + col] / temp[row * m + col];
             for (int c = col; c < m; ++c) {
-                temp[r][c] -= factor * temp[row][c];
+                temp[r * m + c] -= factor * temp[row * m + c];
             }
         }
 
@@ -135,6 +135,7 @@ static int gauss_rank(const Matrix& A) {
         ++rank;
     }
 
+    delete[] temp;
     return rank;
 }
 
